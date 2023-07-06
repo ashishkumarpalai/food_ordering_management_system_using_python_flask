@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Zesty Zomato Menu</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Zesty Zomato Menu</h1>
+
+    <h2>Add a New Dish</h2>
+    <form action="/add_dish" method="POST">
+        <input type="text" name="dish_id" placeholder="Dish ID" required>
+        <input type="text" name="dish_name" placeholder="Dish Name" required>
+        <input type="number" name="price" placeholder="Price" step="0.01" required>
+        <label>
+            Availability: <input type="checkbox" name="availability">
+        </label>
+        <button type="submit">Add Dish</button>
+    </form>
+
+    <h2>Remove a Dish</h2>
+    <form action="/remove_dish" method="POST">
+        <input type="text" name="dish_id" placeholder="Dish ID" required>
+        <button type="submit">Remove Dish</button>
+    </form>
+
+    <h2>Update Dish Availability</h2>
+    <form action="/update_availability" method="POST">
+        <input type="text" name="dish_id" placeholder="Dish ID" required>
+        <label>
+            Available: <input type="checkbox" name="availability">
+        </label>
+        <button type="submit">Update Availability</button>
+    </form>
+
+    <h2>Place a New Order</h2>
+    <form action="/new_order" method="POST">
+        <input type="text" name="customer_name" placeholder="Customer Name" required>
+        <input type="text" name="dish_ids" placeholder="Dish IDs (comma-separated)" required>
+        <button type="submit">Place Order</button>
+    </form>
+
+    <div class="menu">
+        <h2>Menu</h2>
+        <table>
+            <tr>
+                <th>Dish ID</th>
+                <th>Dish Name</th>
+                <th>Price</th>
+                <th>Availability</th>
+            </tr>
+            {% for dish in menu %}
+            <tr>
+                <td>{{ dish['dish_id'] }}</td>
+                <td>{{ dish['dish_name'] }}</td>
+                <td>{{ dish['price'] }}</td>
+                <td>{{ 'Available' if dish['availability'] else 'Not Available' }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    
+</body>
+</html>
