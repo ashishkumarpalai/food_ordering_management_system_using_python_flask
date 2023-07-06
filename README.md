@@ -22,7 +22,7 @@ The Zesty Zomato Web Application is a robust and interactive platform for managi
 
 ## Getting Started:
 
-1. Clone the repository: `git clone https://github.com/your/repository.git`
+1. Clone the repository: `git clone https://github.com/ashishkumarpalai/food_ordering_management_system_using_python_flask`
 2. Install the required dependencies: `pip install -r requirements.txt`
 3. Run the application: `python app.py`
 4. Access the application in your browser: `http://localhost:5000`
